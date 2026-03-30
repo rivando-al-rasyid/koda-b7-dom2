@@ -38,13 +38,12 @@
       justify-content: center;
     }
 
-    .type-tag {
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      color: #fff;
-      font-weight: bold;
+    .types img {
+      width: 100px  ;
+      height: auto;
+    object-fit: contain;
     }
+
 
     @media (max-width: 900px) { #pokemon-list { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 500px) { #pokemon-list { grid-template-columns: 1fr; } }
@@ -57,25 +56,26 @@
 
   <script>
     const mainUrl = "https://pokeapi.co/api/v2/pokemon/?limit=30";
-    const typeColors = {
-      normal:   '#A8A77A',
-      fire:     '#EE8130',
-      water:    '#6390F0',
-      electric: '#F7D02C',
-      grass:    '#7AC74C',
-      ice:      '#96D9D6',
-      fighting: '#C22E28',
-      poison:   '#A33EA1',
-      ground:   '#E2BF65',
-      flying:   '#A98FF3',
-      psychic:  '#F95587',
-      bug:      '#A6B91A',
-      rock:     '#B6A136',
-      ghost:    '#735797',
-      dragon:   '#6F35FC',
-      dark:     '#705746',
-      steel:    '#B7B7CE',
-      fairy:    '#D685AD',
+    const typePokemon = {
+      normal:   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/1.png",
+      fire:     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/10.png",
+      water:    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/11.png",
+      electric: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/13.png",
+      grass:    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/12.png",
+      ice:      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/15.png",
+      fighting: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/2.png",
+      poison:   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/4.png",
+      ground:   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/5.png",
+      flying:   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/3.png",
+      psychic:  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/14.png",
+      bug:      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/7.png",
+      rock:     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/6.png",
+      ghost:    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/8.png",
+      dragon:   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/16.png",
+      dark:     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/17.png",
+      steel:    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/9.png",
+      fairy:    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/18.png",
+      stellar :   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/20.png",
     };
 
     async function fetchPokemon() {
@@ -94,7 +94,7 @@
           const name = detailData.name;
 
           const typeTags = types
-            .map(type => `<span class="type-tag" style="background-color: ${typeColors[type] || '#ccc'};">${type}</span>`)
+            .map(type => `<img src="${typePokemon[type]}" alt="${type}" >`)
             .join('');
 
           const listItem = document.createElement('section');
