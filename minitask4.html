@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example — Sign In</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script type='module' src="js/header.js"></script>
+  </head>
+  <body>
+    <div class="login-container">
+
+      <div class="brand-header">
+        <h1>Sign In</h1>
+      </div>
+
+      <div class="login-form" novalidate>
+
+        <div class="input-group">
+          <label for="login-email">Email</label>
+          <input id="login-email" type="email" name="email" autocomplete="email" placeholder="you@example.com" required />
+          <p class="field-error hidden" id="login-email-error"></p>
+        </div>
+
+        <div class="input-group">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" name="password" autocomplete="current-password" placeholder="••••••••" required />
+          <p class="field-error hidden" id="login-password-error"></p>
+        </div>
+
+
+        <p class="field-error hidden" id="login-general-error"></p>
+
+        <button type="button" class="btn-login">Sign In</button>
+
+      </div>
+    </div>
+
+
+  </body>
+</html>
