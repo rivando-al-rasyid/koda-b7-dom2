@@ -1,86 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Font Awesome Nav</title>
 
-  <title>Basic HTML5</title>
-  <meta name="author" content="rivando al rasyid">
-  <meta name="description" content="HTML5 Template">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <meta property="og:title" content="HTML5 Template">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://">
-  <meta property="og:description" content="HTML5 Template">
-  <meta property="og:image" content="./assets/preview.png">
-
-  <link rel="icon" href="./assets/favicon.ico">
-  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
   <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
+    :root {
+      --bg-color: #333;
+      --active-color: #027a3e;
     }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; }
 
     nav {
-      background-color: #333;
-      overflow: hidden;
+      background-color: var(--bg-color);
+      color: white;
+      padding: 0 1rem;
     }
 
-    nav ul {
-      list-style-type: none;
+    /* --- Mobile Header --- */
+    /* This container keeps the Brand and Hamburger on one line */
+    .nav-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      color: white;
+      text-decoration: none;
+      padding: 14px 0;
+      font-weight: bold;
+    }
+
+    .hamburger-btn {
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    /* --- Navbar Links --- */
+    #navbar {
+      list-style: none;
       margin: 0;
       padding: 0;
-    }
-    nav ul li:first-child {
-      float: left;
-    }
-    nav ul li {
-      float: right;
+      display: none; /* Hidden on mobile */
+      flex-direction: column;
     }
 
-    nav ul li a {
+    nav.open #navbar {
+      display: flex;
+    }
+
+    #navbar li a {
       display: block;
       color: white;
-      text-align: center;
-      padding: 14px 16px;
       text-decoration: none;
+      padding: 14px 16px;
+      border-top: 1px solid #444;
     }
 
-    nav ul li a:hover {
-      background-color: #ddd;
-      color: black;
+    /* --- Desktop Styles (>=768px) --- */
+    @media (min-width: 768px) {
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .hamburger-btn {
+        display: none; /* Hide icon on desktop */
+      }
+
+      #navbar {
+        display: flex !important; /* Always show */
+        flex-direction: row;
+      }
+
+      #navbar li a {
+        border-top: none;
+      }
     }
 
-    nav ul li a.active {
-      background-color: #027a3e;
-      color: white;
-    }
-
+    /* States */
+    #navbar li a:hover { background-color: #ddd; color: black; }
+    #navbar li a.active { background-color: var(--active-color); color: white; }
   </style>
 </head>
-
 <body>
-  <main>
-    <nav>
-      <ul>
-        <li><a href="#home" class="active">WEBHOZZ</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </main>
+
+  <nav id="main-nav">
+    <div class="nav-top">
+      <a href="#home" class="brand">NavBAr</a>
+      <div class="hamburger-btn" id="menu-toggle">
+        <i class="fa fa-bars"></i>
+      </div>
+    </div>
+
+    <ul id="navbar">
+      <style> @media (min-width: 768px) { .mobile-brand { display: none; } } </style>
+      <li><a href="#news">News</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    const toggle = document.getElementById('menu-toggle');
+    const icon = toggle.querySelector('i');
+
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+
+      // Optional: Switch icon from Bars to X when open
+      if (nav.classList.contains('open')) {
+        icon.classList.replace('fa-bars', 'fa-times');
+      } else {
+        icon.classList.replace('fa-times', 'fa-bars');
+      }
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('#navbar a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        icon.classList.replace('fa-times', 'fa-bars');
+      });
+    });
+  </script>
 
 </body>
-
-</html>
-
-      </ul>
-    </nav>
-  </main>
-
-</body>
-
 </html>
