@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Show Password</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+        div {
+          margin-top: 10px;
+        }
+        .border-input {
+          border: 1px solid #333;
+          padding: 5px;
+          display: inline-block;
+        }
+        input {
+          padding: 5px;
+          font-size: 14px;
+
+        }
+        input, input:focus{
+          border: none;
+outline: none;
+        background: transparent;
+
+        }
+        main {
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        button {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          margin-left: 5px;
+        }
+        button img {
+          vertical-align: middle;
+        }
+      </style>
+  </head>
+  <body>
+    <main>
+      <h1>Show Password</h1>
+      <p>In this task, you will create a password input field with a toggle button to show or hide the password. When the user clicks the button, the password should be displayed in plain text, and when they click it again, it should be hidden.</p>
+      <div class='border-input'>
+      Password: <input type="password" value="FakePSW" id="myInput" /><button onclick="myFunction()"><img src="eye.png" height='12' alt=""></button>
+      </div>
+
+    </main>
+
+    <script>
+      function myFunction() {
+        const password = document.querySelector("#myInput");
+        const eye = document.querySelector("button img");
+        if (password.type === "password") {
+          eye.setAttribute("src", "./eyebrow.png");
+          password.type = "text";
+        } else {
+          eye.setAttribute("src", "./eye.png");
+          password.type = "password";
+        }
+      }
+    </script>
+  </body>
+</html>
